@@ -64,6 +64,9 @@ struct Login: View {
     @State var alert = false
     @State var error = ""
     
+    @State var errorUserMessage = ""
+    @State var resetMessage = ""
+    
     var body: some View {
         
         ZStack {
@@ -87,6 +90,7 @@ struct Login: View {
                         .foregroundColor(self.color)
                     
                     TextField("Email", text: self.$email)
+                        .autocapitalization(.none)
                         .padding()
                         .background(RoundedRectangle(cornerRadius: 4).stroke(self.email != "" ? Color("Color") : self.color, lineWidth: 2))
                         .padding(.top, 15)
@@ -96,8 +100,10 @@ struct Login: View {
                         VStack{
                             if self.visible {
                                 TextField("Password", text: self.$pass)
+                                    .autocapitalization(.none)
                             } else {
                                 SecureField("Password", text: self.$pass)
+                                    .autocapitalization(.none)
                             }
                         }
                         
@@ -116,7 +122,7 @@ struct Login: View {
                     HStack{
                         Spacer()
                         Button(action: {
-                            
+                            self.reset()
                         }) {
                             Text("Forgot Password?")
                                 .fontWeight(.bold)
@@ -125,6 +131,10 @@ struct Login: View {
                     }
                     .padding(.top, 10)
                     .padding(.bottom, 15)
+                    
+//                    if self.alert {
+//                        ErrorView(alert: self.$alert, error: self.$error)
+//                    }
                     
                     Button(action: {
                         self.verify()
@@ -150,31 +160,66 @@ struct Login: View {
             )
             .offset(y: -150)
             
-            if self.alert {
-                ErrorView(alert: self.$alert, error: self.$error)
-            }
-            
+//            if self.alert {
+//                ErrorView(alert: self.$alert, error: self.$error)
+//            }
+//
         }
+        .alert("Error", isPresented: $alert) {
+            Button("OK") {}
+        } message: {
+            Text(errorUserMessage)
+        }
+        .alert("Reset", isPresented: $alert) {
+            Button("OK") {}
+        } message: {
+            Text(resetMessage)
+        }
+
     }
     
     func verify() {
-        if self.email != "" && self.pass != "" {
+        if (self.email != "" && self.pass != "") {
+            
             Auth.auth().signIn(withEmail: self.email, password: self.pass) { (res, err) in
                 if err != nil {
                     self.error = err!.localizedDescription
+                    print(self.error)
                     self.alert.toggle()
+                    self.errorUserMessage = "Please fill in all contents correctly."
+                    return
+                } else {
+                    print("success")
+                    UserDefaults.standard.set(true, forKey: "status")
+                    NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
                 }
             }
         } else {
             self.error = "Please fill in all contents properly."
             self.alert.toggle()
+            self.errorUserMessage = "You did not fill in contents."
         }
-        print("success")
-        UserDefaults.standard.set(true, forKey: "status")
-        NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
-        
     }
     
+    func reset(){
+        if self.email != "" {
+            Auth.auth().sendPasswordReset(withEmail: self.email) { (err) in
+                if err != nil {
+                    self.error = err!.localizedDescription
+                    self.alert.toggle()
+                    self.resetMessage = "Reset"
+                    return
+                }
+                self.error = "RESET"
+                self.alert.toggle()
+                self.resetMessage = "Reset"
+            }
+        } else {
+            self.error = "Email iD is empty"
+            self.alert.toggle()
+            self.resetMessage = "Email iD is empty"
+        }
+    }
 }
 
 struct SignUp: View {
@@ -188,6 +233,7 @@ struct SignUp: View {
     @Binding var show : Bool
     @State var alert = false
     @State var error = ""
+    @State var errorUserMessageTwo = ""
     
     var body: some View {
         
@@ -212,6 +258,7 @@ struct SignUp: View {
                         .foregroundColor(self.color)
                     
                     TextField("Email", text: self.$email)
+                        .autocapitalization(.none)
                         .padding()
                         .background(RoundedRectangle(cornerRadius: 4).stroke(self.email != "" ? Color("Color") : self.color, lineWidth: 2))
                         .padding(.top, 15)
@@ -221,8 +268,10 @@ struct SignUp: View {
                         VStack{
                             if self.visible {
                                 TextField("Password", text: self.$pass)
+                                    .autocapitalization(.none)
                             } else {
                                 SecureField("Password", text: self.$pass)
+                                    .autocapitalization(.none)
                             }
                         }
                         
@@ -240,9 +289,11 @@ struct SignUp: View {
                     HStack{
                         VStack{
                             if self.revisible {
-                                TextField("Password", text: self.$repass)
+                                TextField("Re-enter", text: self.$repass)
+                                    .autocapitalization(.none)
                             } else {
-                                SecureField("Password", text: self.$repass)
+                                SecureField("Re-enter", text: self.$repass)
+                                    .autocapitalization(.none)
                             }
                         }
                         
@@ -259,7 +310,7 @@ struct SignUp: View {
                     .padding(.bottom, 15)
                     
                     Button(action: {
-//                        self.register()
+                        self.register()
                     }) {
                         Text("Register")
                             .foregroundColor(.white)
@@ -273,9 +324,9 @@ struct SignUp: View {
                 .padding(.top, 70)
 
             }
-            if self.alert {
-                ErrorView(alert: self.$alert, error: self.$error)
-            }
+//            if self.alert {
+//                ErrorView(alert: self.$alert, error: self.$error)
+//            }
             
         }
         .navigationBarBackButtonHidden(true)
@@ -286,7 +337,41 @@ struct SignUp: View {
                 .offset(y:50)
         )
         .offset(y: -150)
+        .alert("Error", isPresented: $alert) {
+            Button("OK") {}
+        } message: {
+            Text(errorUserMessageTwo)
+        }
     }
+    
+    func register() {
+        if self.email != "" {
+            if self.pass == self.repass {
+                Auth.auth().createUser(withEmail: self.email, password: self.pass) {
+                    (res, err) in
+                    
+                    if err != nil {
+                        self.error = err!.localizedDescription
+                        self.alert.toggle()
+                        return
+                    }
+                    print("success")
+                    UserDefaults.standard.set(true, forKey: "status")
+                    NotificationCenter.default.post(name: NSNotification.Name("Status"), object: nil)
+                    
+                }
+            } else {
+                self.error = "Password mismatch"
+                self.alert.toggle()
+                self.errorUserMessageTwo = "Please ensure Passwords are matched."
+            }
+        } else {
+            self.error = "Please fill all the contents properly"
+            self.alert.toggle()
+            self.errorUserMessageTwo = "Please fill in all contents correctly."
+        }
+    }
+    
 }
 
 struct ErrorView: View {

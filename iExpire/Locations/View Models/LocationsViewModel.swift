@@ -9,6 +9,7 @@ import Foundation
 import MapKit
 import SwiftUI
 
+//@MainActor
 class LocationsViewModel: ObservableObject {
     
     // All loaded locations
