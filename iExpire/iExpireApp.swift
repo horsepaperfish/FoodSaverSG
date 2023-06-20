@@ -24,7 +24,7 @@ struct iExpireApp: App {
     
     var body: some Scene {
         WindowGroup {
-            AuthView()
+            StartView()
                 .environment(\.managedObjectContext, dataController.container.viewContext)
                 .environmentObject(vm)
         }

@@ -135,6 +135,7 @@ struct TrackedItemsView: View {
             .sheet(isPresented: $showingSettings) {
                 SettingsView(items: items)
             }
+            .navigationBarBackButtonHidden(true)
         }
     }
     

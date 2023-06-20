@@ -30,6 +30,7 @@
 		FE7DB25E2A40942600363EDF /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = FE7DB25D2A40942600363EDF /* FirebaseAnalytics */; };
 		FE7DB2602A40942600363EDF /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = FE7DB25F2A40942600363EDF /* FirebaseAuth */; };
 		FE7DB2622A40942600363EDF /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = FE7DB2612A40942600363EDF /* FirebaseFirestore */; };
+		FE966D692A418D4200AEB248 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE966D682A418D4100AEB248 /* StartView.swift */; };
 		FEDF01C42A3EF96E00490612 /* LocationsDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDF01C32A3EF96E00490612 /* LocationsDataService.swift */; };
 		FEDF01C62A3EF99200490612 /* LocationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDF01C52A3EF99200490612 /* LocationsViewModel.swift */; };
 		FEDF01C82A3F00E100490612 /* LocationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDF01C72A3F00E100490612 /* LocationsView.swift */; };
@@ -66,6 +67,7 @@
 		FE0A848B2A3E0FB90055EA93 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		FE7DB2582A4056F600363EDF /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		FE7DB25A2A40937C00363EDF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FE966D682A418D4100AEB248 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		FEDF01C32A3EF96E00490612 /* LocationsDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsDataService.swift; sourceTree = "<group>"; };
 		FEDF01C52A3EF99200490612 /* LocationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsViewModel.swift; sourceTree = "<group>"; };
 		FEDF01C72A3F00E100490612 /* LocationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsView.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				92FA0B46297A326F00F12C85 /* iExpireApp.swift */,
 				FE0A848B2A3E0FB90055EA93 /* HomeView.swift */,
 				FE7DB2582A4056F600363EDF /* AuthView.swift */,
+				FE966D682A418D4100AEB248 /* StartView.swift */,
 				FEDF01DC2A3F495900490612 /* BaseView.swift */,
 				FEDF01D92A3F400D00490612 /* Articles */,
 				FEDF01D42A3F03EE00490612 /* Food Search */,
@@ -333,6 +336,7 @@
 				FEDF01CA2A3F00FF00490612 /* LocationPreviewView.swift in Sources */,
 				92E1884D297BB47C009BD0E4 /* PhotoSelectorView.swift in Sources */,
 				FEDF01CC2A3F011800490612 /* LocationMapAnnotationView.swift in Sources */,
+				FE966D692A418D4200AEB248 /* StartView.swift in Sources */,
 				FE7DB2592A4056F600363EDF /* AuthView.swift in Sources */,
 				FEDF01D82A3F041400490612 /* FoodSearchView.swift in Sources */,
 				92E1886429809063009BD0E4 /* SettingsView.swift in Sources */,

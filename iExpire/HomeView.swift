@@ -67,7 +67,7 @@ struct HomeView: View {
                                 .offset(x: 145, y: 45)
                         }
                     }
-                    
+                        .navigationBarBackButtonHidden(true)
                     NavigationLink {
                         ArticleView()
                     } label: {
@@ -90,7 +90,7 @@ struct HomeView: View {
                                 .offset(x: 145, y: 20)
                         }
                     }
-                    
+                        .navigationBarBackButtonHidden(true)
                     NavigationLink {
                         LocationsView()
                     } label: {
