@@ -34,7 +34,7 @@ struct ResetDataButton: View {
     let sfImage = "eraser.line.dashed.fill"
     
     var body: some View {
-        ButtonWithIconLeft("Clear all app data", image: Image(systemName: sfImage), role: .destructive) {
+        ButtonWithIconLeft("Clear all food items", image: Image(systemName: sfImage), role: .destructive) {
                 showingAlert = true
         }
         .alert("This is an IRREVERSIBLE action!", isPresented: $showingAlert) {
@@ -60,7 +60,7 @@ struct ExportToCSVButton: View {
     private let sfImage = "square.and.arrow.down.fill"
     
     var body: some View {
-        ButtonWithIconLeft("Export Item Data (CSV)", image: Image(systemName: sfImage)) {
+        ButtonWithIconLeft("Export Food Item Data", image: Image(systemName: sfImage)) {
             createCSVData()
             isExporting = true
         }

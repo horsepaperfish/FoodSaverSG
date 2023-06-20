@@ -21,22 +21,29 @@ struct ArticleView: View {
     var body: some View {
         NavigationView{
             Form{
+                
+                Text("Find out more.")
+                
                 Section("Fun Facts"){
                     VStack {
                         Text("Did you know?")
                             .font(.headline)
                             .bold()
+                            .fontWeight(.bold)
                         Text(generatedFact)
                     }
                     Button(action: {
                         generateFact()
                     }) {
-                        Text("Generate New Fact")
-                            .multilineTextAlignment(.center)
+                        HStack{
+                            Spacer()
+                            Text("Generate New Fact")
+                            Spacer()
+                        }
                     }
                 }
                 
-                Section("Starred") {
+                Section("Starred Articles") {
                     ForEach(starredArticles) { article in
                         NavigationLink(destination: ArticleDetailView(article: article)) {
                             Image(systemName: "star.fill")
@@ -47,13 +54,14 @@ struct ArticleView: View {
                                     }
                                 }
                             Text(article.title)
+ 
                         }
                     }
 //                    .onDelete { indexSet in
 //                       unstarArticles(at: indexSet)
 //                    }
                 }
-                Section("Others") {
+                Section("Other Articles") {
                     ForEach(allArticles) { article in
                         if !starredArticles.contains(article) {
                             NavigationLink(destination: ArticleDetailView(article: article)) {

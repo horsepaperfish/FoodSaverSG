@@ -18,7 +18,12 @@ struct PhotoSelectorView: View {
     
     var body: some View {
         PhotosPicker(selection: $selectedItem, matching: .images) {
-            Text("Select Photo")
+            HStack {
+                Spacer()
+                Text("Select Photo")
+                Spacer()
+            }
+            
         }
         .onChange(of: selectedItem) { newItem in
             Task {

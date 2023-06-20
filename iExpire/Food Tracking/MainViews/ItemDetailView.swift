@@ -15,7 +15,7 @@ struct ItemDetailView: View {
     @State private var isEditing = false
     
     var body: some View {
-        NavigationStack {
+        NavigationView {
             ItemDetailPortrait(item: item)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
@@ -27,10 +27,20 @@ struct ItemDetailView: View {
                     }
                 }
                 .sheet(isPresented: $isEditing) {
-                ItemEditView(item: item)
-            }
-            .navigationTitle("Food Details")
+                        ItemEditView(item: item)
+                }
+                .navigationBarTitle("Food Details")
+                .navigationBarBackButtonHidden(true)
         }
+        .background(
+            Image("waves")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .edgesIgnoringSafeArea(.all)
+                .frame(width: UIScreen.main.bounds.width)
+            
+        )
+        
     }
     
     struct ItemDetailPortrait: View {
@@ -43,13 +53,13 @@ struct ItemDetailView: View {
                 Section("Food Details") {
                     HStack{
                         Text("Food Name")
+                        Spacer()
                         Text(item.wrappedName)
-                            .multilineTextAlignment(.trailing)
                     }
                     HStack{
                         Text("Food Category")
+                        Spacer()
                         Text(item.wrappedCategory)
-                            .multilineTextAlignment(.trailing)
                     }
                 }
                     Section("Notes") {
@@ -62,6 +72,7 @@ struct ItemDetailView: View {
                                 Section {
                                     HStack{
                                         Text("Notes")
+                                        Spacer()
                                         Text(item.wrappedNotes)
                                     }
                                 }
@@ -71,6 +82,7 @@ struct ItemDetailView: View {
                     Section("Dates") {
                         HStack{
                             Text("Date of Expiration")
+                            Spacer()
                             ExpirationTextView(expirationDate: item.wrappedDateTime)
                                 .multilineTextAlignment(.trailing)
                         }

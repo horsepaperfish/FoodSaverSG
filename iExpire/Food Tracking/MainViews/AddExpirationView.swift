@@ -33,19 +33,27 @@ struct AddExpirationView: View {
                 Form {
                     Section {
                         HStack{
-                            Text("Name")
-                            TextField("Item name", text: $name)
+                            Text("Name:")
+                            Spacer()
+                            Spacer()
+                            Spacer()
+                            TextField("Add Item name", text: $name)
                                 .autocorrectionDisabled()
+                                .frame(width: 120)
                         }
                         DatePicker("Expiration Date:", selection: $expDate, displayedComponents: [.date])
                     } header: {
                         Text("Required")
                     }
-                    Section {
+                    Section("Category") {
                         if showCustomCategory {
                             HStack {
                                 Text("Category:")
-                                TextField("Category", text: $category)
+                                Spacer()
+                                Spacer()
+                                Spacer()
+                                TextField("Add Category", text: $category)
+                                    .frame(width: 110)
                             }
                         } else {
                             Picker("Category:", selection: $category) {
@@ -54,27 +62,31 @@ struct AddExpirationView: View {
                                 }
                             }
                         }
-                        Button(showCustomCategory ? "Choose existing category" : "Make Custom Category") {
-                            showCustomCategory.toggle()
-                            if !showCustomCategory { category = categories.first! }
+                        HStack {
+                            Spacer()
+                            Button(showCustomCategory ? "Choose existing category" : "Make Custom Category") {
+                                showCustomCategory.toggle()
+                                if !showCustomCategory { category = categories.first! }
+                            }
+                            .disabled(categories.count <= 0)
+                            Spacer()
                         }
-                        .disabled(categories.count <= 0)
                     }
                     
-                    Section {
+                    Section("More Details"){
                         HStack {
-                            Text("Notes:")
-                            TextEditor(text: $notes)
+                            TextField("Add Notes", text: $notes)
                         }
                         PhotoSelectorView(selectedItem: $image, imageData: $imageData)
-                    } header: {
-                        Text("Optional fields")
                     }
-                    
-                    Button("Submit") {
-                        saveItem()
+                    HStack {
+                        Spacer()
+                        Button("Submit") {
+                            saveItem()
+                        }
+                        .disabled(!isValidItem())
+                        Spacer()
                     }
-                    .disabled(!isValidItem())
                 }
                 .navigationTitle("Add Item")
             }

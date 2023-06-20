@@ -14,10 +14,14 @@ struct ExpirationChartsView: View {
     var groupedItems: OrderedDictionary<String, [Item]>
     
     var body: some View {
-        NavigationLink {
-            ItemBarChart(groupedItems: groupedItems)
-        } label: {
-            Text("Expiration Date Data")
+        Form {
+            Section("Expiration Date Data") {
+                NavigationLink {
+                    ItemBarChart(groupedItems: groupedItems)
+                } label: {
+                    Text("Expiration Date Data")
+                }
+            }
         }
     }
 }

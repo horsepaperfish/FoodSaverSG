@@ -54,6 +54,7 @@ struct TrackedItemsView: View {
                     .frame(width: 350, alignment: .leading)
                     .font(.system(size: 35))
                     .bold()
+                    .fontWeight(.bold)
                 HStack {
                     Button{
                         showingDeleteAlert.toggle()
@@ -131,8 +132,9 @@ struct TrackedItemsView: View {
             .sheet(isPresented: $showingAddScreen) {
                 AddExpirationView(categories: categories.sorted())
             }
-
-            
+            .sheet(isPresented: $showingSettings) {
+                SettingsView(items: items)
+            }
         }
     }
     
@@ -162,6 +164,7 @@ struct ListItem: View {
         VStack {
             HStack {
                 Text(item.wrappedName)
+                Spacer()
                 ExpirationTextView(expirationDate: item.wrappedDateTime)
                     .multilineTextAlignment(.trailing)
             }
