@@ -71,6 +71,7 @@ struct ArticleView: View {
                     }
                 }
             }
+            .navigationBarBackButtonHidden(true)
         }
     }
 

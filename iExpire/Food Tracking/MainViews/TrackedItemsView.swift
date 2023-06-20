@@ -131,9 +131,7 @@ struct TrackedItemsView: View {
             .sheet(isPresented: $showingAddScreen) {
                 AddExpirationView(categories: categories.sorted())
             }
-            .sheet(isPresented: $showingSettings) {
-                SettingsView(items: items)
-            }
+
             
         }
     }

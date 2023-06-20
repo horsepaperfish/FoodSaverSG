@@ -42,9 +42,10 @@ extension LocationsView {
         VStack {
             Button(action: vm.toggleLocationsList) {
                 Text(vm.mapLocation.name + ", " +  vm.mapLocation.cityName)
-                    .font(.title2)
-                    .fontWeight(.black)
-                    .foregroundColor(.black)
+//                    .font(.title)
+                    .fontWeight(.bold)
+                    .foregroundColor(.black.opacity(0.7))
+                    .font(.system(size: 20))
                     .frame(height: 55)
                     .frame(maxWidth: .infinity)
                     .animation(.none, value: vm.mapLocation)

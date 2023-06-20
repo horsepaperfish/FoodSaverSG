@@ -31,14 +31,46 @@ struct HomeView: View {
                 } label: {
                     ZStack{
                         RoundedRectangle(cornerRadius: 10)
-                            .frame(width: 350, height:100)
-                        Text("Track your food items")
-                            .foregroundColor(.white)
-                            .frame(width: 1000, height: 100)
-                            .cornerRadius(10)
-                            .font(.system(size: 30))
-                        
+                            .frame(width: 360, height:190)
+                        HStack{
+                            Image(systemName: "plus.circle.fill")
+                                .font(.system(size: 30))
+                            Text("Track your food items")
+                                .font(.system(size: 30))
+                                .bold()
+                        }
+                        .foregroundColor(.white)
+                        .frame(width: 1000, height: 100)
+                        .cornerRadius(10)
+                        .offset(y: -60)
+                        HStack{
+                            RoundedRectangle(cornerRadius: 10).fill(Color("Color"))
+                                .frame(width: 130, height:90)
+                                .offset(x: -25, y: 20)
+                            RoundedRectangle(cornerRadius: 10).fill(Color("Color"))
+                                .frame(width: 110, height:90)
+                                .offset(x: -10, y: 20)
+                            
+                        }
+                        HStack{
+                            Text("Expired: \n4")
+                                .font(.system(size: 25))
+                                .bold()
+                                .foregroundColor(.black)
+                                .offset(x: -45)
+                            Text("Total: \n20")
+                                .font(.system(size: 25))
+                                .bold()
+                                .foregroundColor(.black)
+                                .offset(x: 7)
+                        }
+                        .offset(y: 20)
                         Spacer()
+                        Image(systemName: "chevron.right")
+                            .foregroundColor(.white)
+                            .bold()
+                            .font(.system(size: 30))
+                            .offset(x: 145, y: 45)
                     }
                 }
                 
@@ -47,14 +79,21 @@ struct HomeView: View {
                 } label: {
                     ZStack{
                         RoundedRectangle(cornerRadius: 10)
-                            .frame(width: 350, height:100)
-                        Text("Find out more about \n Food Wastage")
-                            .foregroundColor(.white)
-                            .frame(width: 1000, height: 100)
-                            .cornerRadius(10)
-                            .font(.system(size: 30))
-                        
+                            .frame(width: 360, height:100)
+                        HStack{
+                            Image(systemName: "book.fill")
+                                .font(.system(size: 30))
+                            Text("Find out more about food wastage")
+                                .font(.system(size: 30))
+                                .bold()
+                        }
+                        .foregroundColor(.white)
                         Spacer()
+                        Image(systemName: "chevron.right")
+                            .foregroundColor(.white)
+                            .bold()
+                            .font(.system(size: 30))
+                            .offset(x: 145, y: 20)
                     }
                 }
                 
@@ -63,7 +102,7 @@ struct HomeView: View {
                 } label: {
                     ZStack{
                         RoundedRectangle(cornerRadius: 10)
-                            .frame(width: 350, height:100)
+                            .frame(width: 360, height:100)
                         Text("Check for nearby \n donation points")
                             .foregroundColor(.white)
                             .frame(width: 1000, height: 100)
