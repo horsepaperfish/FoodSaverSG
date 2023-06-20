@@ -13,9 +13,15 @@ struct ArticleView: View {
     @State private var generatedFact: String = ""
     @State private var starredArticles: [Article] = []
     private let allArticles: [Article] = [
-        Article(title: "How to start Composting", content: "BLAH BLAH", picture: Image("paris-effieltower-1")),
-        Article(title: "Why recycle food waste?", content: "XXX", picture: Image("paris-effieltower-1")),
-        Article(title: "The Problem of Food Wastage", content: "XXX", picture: Image("paris-effieltower-1"))
+        Article(title: "How to start Composting",
+                content: "BLAH BLAH",
+                picture: "alexandra-point"),
+        Article(title: "Why recycle food waste?",
+                content: "XXX",
+                picture: "paris-effieltower-1"),
+        Article(title: "The Problem of Food Wastage",
+                content: "XXX",
+                picture: "paris-effieltower-1")
     ]
     
     var body: some View {
@@ -44,6 +50,8 @@ struct ArticleView: View {
                 }
                 
                 Section("Starred Articles") {
+                    
+                    
                     ForEach(starredArticles) { article in
                         NavigationLink(destination: ArticleDetailView(article: article)) {
                             Image(systemName: "star.fill")
@@ -51,15 +59,12 @@ struct ArticleView: View {
                                   // run the toggle starred function or whatever it is here
                                     withAnimation {
                                         toggleStarred(article)
-                                    }
                                 }
+                            }
                             Text(article.title)
- 
+                            Image("\(article.picture)")
                         }
                     }
-//                    .onDelete { indexSet in
-//                       unstarArticles(at: indexSet)
-//                    }
                 }
                 Section("Other Articles") {
                     ForEach(allArticles) { article in
@@ -72,10 +77,14 @@ struct ArticleView: View {
                                         toggleStarred(article)
                                     }
                                 }
-                              Text(article.title)
+                                HStack {
+                                    Text(article.title)
+                                    Image(article.image)
+                                        .resizable()
+                                        .frame(width: 50, height: 50)
+                                }
                             }
                         }
-                        
                     }
                 }
             }
@@ -130,7 +139,7 @@ struct Article: Identifiable, Equatable {
     let id = UUID()
     let title: String
     let content: String
-    let picture: Image
+    let picture: String
 }
 
 struct ArticleView_Previews: PreviewProvider {

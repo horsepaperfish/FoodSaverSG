@@ -8,23 +8,14 @@
 import SwiftUI
 
 struct ArticleDetailView: View {
-    
+
     let article: Article
     
     var body: some View {
         VStack{
-            Text(article.content)
-                .padding()
-            
-            Spacer()
-            
+            Text("Hello World")
         }
         .navigationBarTitle(article.title)
     }
 }
-//
-//struct ArticleDetailView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ArticleDetailView(article: <#Article#>)
-//    }
-//}
+
