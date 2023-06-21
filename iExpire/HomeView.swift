@@ -19,12 +19,28 @@ struct HomeView: View {
             ScrollView {
                 VStack {
                     
-       //             Spacer(minLength: 50)
-                    Text("Welcome, \nUser Z!")
-                        .font(.system(size: 50))
-                        .fontWeight(.bold)
-                        .bold()
-                        .frame(width: 350, alignment: .leading)
+                    HStack {
+                        VStack{
+                            Text("Welcome,")
+                                .font(.system(size: 50))
+                                .fontWeight(.bold)
+                                .bold()
+                                .frame(width: 300, alignment: .leading)
+                            Text("User Z!")
+                                .font(.system(size: 40))
+                                .fontWeight(.bold)
+                                .bold()
+                                .frame(width: 300, alignment: .leading)
+                                .foregroundColor(Color.accentColor)
+                        }
+                        NavigationLink {
+                            ProfileView()
+                        } label: {
+                            Image(systemName: "person.crop.circle")
+                                .font(.system(size: 30))
+                        }
+
+                    }
                     
                     NavigationLink {
                         TrackedItemsView()
@@ -188,19 +204,19 @@ struct HomeView: View {
 
                     }
                     
-                    Button(action: {
-                        try! Auth.auth().signOut()
-                        UserDefaults.standard.set(false, forKey: "status")
-                        NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
-
-                    }) {
-                        Text("Log Out")
-                            .foregroundColor(.white)
-                            .padding(.vertical)
-                            .frame(width: UIScreen.main.bounds.width - 50)
-                    }
-                    .background(Color.accentColor)
-                    .cornerRadius(10)
+//                    Button(action: {
+//                        try! Auth.auth().signOut()
+//                        UserDefaults.standard.set(false, forKey: "status")
+//                        NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
+//
+//                    }) {
+//                        Text("Log Out")
+//                            .foregroundColor(.white)
+//                            .padding(.vertical)
+//                            .frame(width: UIScreen.main.bounds.width - 50)
+//                    }
+//                    .background(Color.accentColor)
+//                    .cornerRadius(10)
                 }
             }
             .navigationBarTitle("")
