@@ -28,8 +28,6 @@ struct ArticleView: View {
         NavigationView{
             Form{
                 
-                Text("Find out more.")
-                
                 Section("Fun Facts"){
                     VStack {
                         Text("Did you know?")
@@ -92,6 +90,7 @@ struct ArticleView: View {
                     }
                 }
             }
+            .navigationBarTitle("Find out more")
             .navigationBarBackButtonHidden(true)
         }
     }
