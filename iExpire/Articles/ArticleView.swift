@@ -34,16 +34,21 @@ struct ArticleView: View {
                             .font(.headline)
                             .bold()
                             .fontWeight(.bold)
+                            .frame(width: 300, alignment: .center)
                         Text(generatedFact)
                     }
                     Button(action: {
                         generateFact()
+
                     }) {
                         HStack{
                             Spacer()
                             Text("Generate New Fact")
                             Spacer()
                         }
+                    }
+                    .onAppear {
+                        generateFact()
                     }
                 }
                 
@@ -121,6 +126,7 @@ struct ArticleView: View {
         
     ]
         generatedFact = allfacts.randomElement() ?? "In Singapore, it is estimated that about 763 million kilograms of food is wasted annually."
+            
     }
     
     func toggleStarred(_ article: Article) {
