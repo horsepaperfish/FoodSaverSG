@@ -45,7 +45,7 @@ struct ItemDetailView: View {
     struct ItemDetailPortrait: View {
         
         @ObservedObject var item: Item
-        private let cornerRadius: CGFloat = 20
+//        private let cornerRadius: CGFloat = 20
         
         var body: some View {
             Form {
@@ -64,7 +64,7 @@ struct ItemDetailView: View {
                     Section("Notes") {
                         VStack {
                             LoadedImageView(imageData: item.image)
-                                .cornerRadius(cornerRadius)
+                                .cornerRadius(5)
                                 .padding()
                                 
                             if !item.wrappedNotes.isEmpty {

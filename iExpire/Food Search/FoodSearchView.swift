@@ -13,18 +13,23 @@ struct FoodSearchView: View {
     @Environment(\.openURL) var openURL
     
     let allfooditemnames = [
-        "Rice",
+        "Rice, 1kg or 2kg",
         "Vermicelli",
-        "Biscuits",
-        "Malt Drinks",
-        "Coffee",
+        "Bee Hoon",
+        "Biscuits, less sugar",
+        "Malt Drinks, less sugar",
+        "Coffee, less sugar",
         "Tea Satchets",
-        "Canned Drinks",
+        "Canned fish",
+        "Canned meat",
+        "Canned Drinks, beans, mushroom, peas",
+        "Canned mock meat",
         "Canned Vegetables",
         "Canned Soup",
         "Canned Fruit",
-        "Cooking Oil",
-        "Evaporated/Condensed Milk"
+        "Cooking Oil, 500ml or 1L",
+        "Bread Spread",
+        "Evaporated/Condensed Milk",
     ]
     
     var body: some View {
@@ -59,6 +64,7 @@ struct FoodSearchView: View {
                                 radius: 3,
                                 x: 3,
                                 y: 3)
+                        .frame(width: 350, alignment: .trailing)
                     }
                 }
             }
