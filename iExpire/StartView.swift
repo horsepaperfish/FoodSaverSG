@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct StartView: View {
+    
+    @State private var isActive: Bool = false
+    
     var body: some View {
-        NavigationView {
+        NavigationStack{
             VStack {
                 Image("foodsaversg logogo")
                     .resizable()
@@ -21,21 +24,23 @@ struct StartView: View {
                     .font(.system(size: 50))
                 Text("Reduce. Reuse. Repurpose. Food Waste")
                     .font(.system(size: 15))
-                NavigationLink{
-                    AuthView()
-                } label: {
+
+                
+                NavigationLink(destination: AuthView(), isActive: $isActive, label: {
                     Text("Get Started")
                         .foregroundColor(.white)
                         .padding(.vertical)
                         .frame(width: UIScreen.main.bounds.width - 50)
                         .font(.system(size: 20))
                         .fontWeight(.bold)
-                }
-                .navigationBarBackButtonHidden(true)
+                })
                 .background(Color.accentColor)
                 .cornerRadius(10)
                 .padding(20)
             }
+            .navigationBarTitle("")
+            .navigationBarHidden(true)
+            .navigationBarBackButtonHidden(true)
         }
     }
 }

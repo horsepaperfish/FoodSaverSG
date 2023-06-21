@@ -14,11 +14,16 @@ struct HomeView: View {
     @EnvironmentObject private var vm: LocationsViewModel
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ScrollView {
                 VStack {
                     
        //             Spacer(minLength: 50)
+                    Text("Welcome, \nUser Z!")
+                        .font(.system(size: 50))
+                        .fontWeight(.bold)
+                        .bold()
+                        .frame(width: 350, alignment: .leading)
                     
                     NavigationLink {
                         TrackedItemsView()
@@ -28,13 +33,13 @@ struct HomeView: View {
                                 .frame(width: 350, height:190)
                             HStack{
                                 Image(systemName: "plus.circle.fill")
-                                    .font(.system(size: 30))
+                                    .font(.system(size: 20))
                                 Text("Track your food items")
-                                    .font(.system(size: 30))
+                                    .font(.system(size: 20))
                                     .bold()
                             }
                             .foregroundColor(.white)
-                            .frame(width: 1000, height: 100)
+                            .frame(width: 310, height: 100, alignment: .leading)
                             .cornerRadius(10)
                             .offset(y: -60)
                             HStack{
@@ -48,12 +53,12 @@ struct HomeView: View {
                             }
                             HStack{
                                 Text("Expired: \n4")
-                                    .font(.system(size: 25))
+                                    .font(.system(size: 15))
                                     .bold()
                                     .foregroundColor(.black)
                                     .offset(x: -45)
                                 Text("Total: \n20")
-                                    .font(.system(size: 25))
+                                    .font(.system(size: 15))
                                     .bold()
                                     .foregroundColor(.black)
                                     .offset(x: 7)
@@ -139,7 +144,8 @@ struct HomeView: View {
                     .cornerRadius(10)
                 }
             }
-            .navigationBarTitle("Welcome, User Z!")
+            .navigationBarTitle("")
+            .navigationBarHidden(true)
             .navigationBarBackButtonHidden(true)
         }
     }
