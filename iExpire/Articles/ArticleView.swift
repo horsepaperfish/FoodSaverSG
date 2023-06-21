@@ -25,7 +25,7 @@ struct ArticleView: View {
     ]
     
     var body: some View {
-        NavigationView{
+        NavigationStack{
             Form{
                 
                 Section("Fun Facts"){
@@ -96,7 +96,7 @@ struct ArticleView: View {
                 }
             }
             .navigationBarTitle("Find out more")
-            .navigationBarBackButtonHidden(true)
+//            .navigationBarBackButtonHidden(true)
         }
     }
 

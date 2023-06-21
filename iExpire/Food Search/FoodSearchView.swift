@@ -28,7 +28,7 @@ struct FoodSearchView: View {
     ]
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
                 List(filteredNames, id: \.self) { name in
                     HStack{

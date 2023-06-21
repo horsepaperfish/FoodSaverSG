@@ -203,25 +203,11 @@ struct HomeView: View {
                         }
 
                     }
-                    
-//                    Button(action: {
-//                        try! Auth.auth().signOut()
-//                        UserDefaults.standard.set(false, forKey: "status")
-//                        NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
-//
-//                    }) {
-//                        Text("Log Out")
-//                            .foregroundColor(.white)
-//                            .padding(.vertical)
-//                            .frame(width: UIScreen.main.bounds.width - 50)
-//                    }
-//                    .background(Color.accentColor)
-//                    .cornerRadius(10)
                 }
             }
-            .navigationBarTitle("")
-            .navigationBarHidden(true)
-            .navigationBarBackButtonHidden(true)
+//            .navigationBarTitle("")
+//            .navigationBarHidden(true)
+//            .navigationBarBackButtonHidden(true)
         }
         .transition(.move(edge: .trailing))
         .animation(.easeInOut(duration: 0.5))

@@ -48,7 +48,7 @@ struct TrackedItemsView: View {
     }
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 Text("Tracked Items")
                     .frame(width: 350, alignment: .leading)
@@ -135,7 +135,7 @@ struct TrackedItemsView: View {
             .sheet(isPresented: $showingSettings) {
                 SettingsView(items: items)
             }
-            .navigationBarBackButtonHidden(true)
+       //     .navigationBarBackButtonHidden(true)
         }
     }
     

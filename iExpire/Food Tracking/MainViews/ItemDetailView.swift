@@ -15,7 +15,7 @@ struct ItemDetailView: View {
     @State private var isEditing = false
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ItemDetailPortrait(item: item)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
@@ -29,8 +29,7 @@ struct ItemDetailView: View {
                 .sheet(isPresented: $isEditing) {
                         ItemEditView(item: item)
                 }
-                .navigationBarTitle("Food Details")
-                .navigationBarBackButtonHidden(true)
+                .navigationTitle("Food Details")
         }
         .background(
             Image("waves")
