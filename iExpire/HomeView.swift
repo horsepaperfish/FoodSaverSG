@@ -223,6 +223,8 @@ struct HomeView: View {
             .navigationBarHidden(true)
             .navigationBarBackButtonHidden(true)
         }
+        .transition(.move(edge: .trailing))
+        .animation(.easeInOut(duration: 0.5))
     }
 }
 

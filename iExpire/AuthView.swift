@@ -50,6 +50,8 @@ struct Home: View {
                 }
             }
         }
+        .transition(.move(edge: .trailing))
+        .animation(.easeInOut(duration: 0.5))
     }
 }
 
@@ -140,10 +142,12 @@ struct Login: View {
                         self.verify()
 
                     }) {
-                        Text("Log in")
-                            .foregroundColor(.white)
-                            .padding(.vertical)
+                        withAnimation {
+                            Text("Log in")
+                                .foregroundColor(.white)
+                                .padding(.vertical)
                             .frame(width: UIScreen.main.bounds.width - 50)
+                        }
                     }
                     .background(Color.accentColor)
                     .cornerRadius(10)
@@ -241,6 +245,7 @@ struct SignUp: View {
 
         ZStack {
             ZStack(alignment: .topLeading) {
+                
                 Button(action: {
                     self.show.toggle()
                 }) {
@@ -250,21 +255,21 @@ struct SignUp: View {
                 }
                 .padding(30)
                 .offset(y: -50)
-
-
+                
+                
                 // everything
                 VStack{
                     Text("Register your account")
                         .font(.title)
                         .fontWeight(.bold)
                         .foregroundColor(self.color)
-
+                    
                     TextField("Email", text: self.$email)
                         .autocapitalization(.none)
                         .padding()
                         .background(RoundedRectangle(cornerRadius: 4).stroke(self.email != "" ? Color("Color") : self.color, lineWidth: 2))
                         .padding(.top, 15)
-
+                    
                     // password textfield
                     HStack{
                         VStack{
@@ -276,7 +281,7 @@ struct SignUp: View {
                                     .autocapitalization(.none)
                             }
                         }
-
+                        
                         Button(action: {
                             self.visible.toggle()
                         }) {
@@ -287,7 +292,7 @@ struct SignUp: View {
                     .padding()
                     .background(RoundedRectangle(cornerRadius: 4).stroke(self.pass != "" ? Color("Color") : self.color, lineWidth: 2))
                     .padding(.top, 15)
-
+                    
                     HStack{
                         VStack{
                             if self.revisible {
@@ -298,7 +303,7 @@ struct SignUp: View {
                                     .autocapitalization(.none)
                             }
                         }
-
+                        
                         Button(action: {
                             self.revisible.toggle()
                         }) {
@@ -310,7 +315,7 @@ struct SignUp: View {
                     .background(RoundedRectangle(cornerRadius: 4).stroke(self.repass != "" ? Color("Color") : self.color, lineWidth: 2))
                     .padding(.top, 15)
                     .padding(.bottom, 15)
-
+                    
                     Button(action: {
                         self.register()
                     }) {
@@ -324,21 +329,23 @@ struct SignUp: View {
                 }
                 .padding(.horizontal, 25)
                 .padding(.top, 70)
-
+                
             }
+            .navigationBarBackButtonHidden(true)
+            .background(
+                Image("waves")
+                    .resizable()
+                    .scaledToFill()
+                    .offset(y:50)
+            )
+            .offset(y: -150)
+            
+            
             if self.alert {
                 ErrorView(alert: self.$alert, error: self.$error)
             }
-
         }
-        .navigationBarBackButtonHidden(true)
-        .background(
-            Image("waves")
-                .resizable()
-                .scaledToFill()
-                .offset(y:50)
-        )
-        .offset(y: -150)
+        
 //        .alert("Error", isPresented: $alert) {
 //            Button("OK") {}
 //        } message: {
